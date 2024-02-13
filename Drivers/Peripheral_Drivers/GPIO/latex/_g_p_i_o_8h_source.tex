@@ -1,0 +1,105 @@
+\doxysection{GPIO.\+h}
+\hypertarget{_g_p_i_o_8h_source}{}\label{_g_p_i_o_8h_source}\mbox{\hyperlink{_g_p_i_o_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00002}00002\ \textcolor{comment}{\ *\ GPIO.h}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jan\ 7,\ 2024}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Ramy\ Sorial}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ MYGPIO\_DRIVER\_GPIO\_H\_}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ MYGPIO\_DRIVER\_GPIO\_H\_}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00018}\mbox{\hyperlink{_g_p_i_o_8h_a79b68fa83ccf9544756c9ee921a58275}{00018}}\ \textcolor{preprocessor}{\#define\ GPIOA\_Base\ 0x40010800}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00019}\mbox{\hyperlink{_g_p_i_o_8h_aabe555c8627ba33474a151bea0504a88}{00019}}\ \textcolor{preprocessor}{\#define\ GPIOB\_Base\ 0x40010C00}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00020}\mbox{\hyperlink{_g_p_i_o_8h_ae83c8b85d378ea9355833e053ee10f5c}{00020}}\ \textcolor{preprocessor}{\#define\ GPIOC\_Base\ 0x40011000}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00021}\mbox{\hyperlink{_g_p_i_o_8h_aa118e40464052ab272b61d2eb6026289}{00021}}\ \textcolor{preprocessor}{\#define\ GPIOD\_Base\ 0x40011400}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00022}\mbox{\hyperlink{_g_p_i_o_8h_ae39550923bc18965e5585fb3fca519b2}{00022}}\ \textcolor{preprocessor}{\#define\ GPIOE\_Base\ 0x40011800}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00023}\mbox{\hyperlink{_g_p_i_o_8h_a3e166b3147936adc4c374ed5cc5d5e29}{00023}}\ \textcolor{preprocessor}{\#define\ GPIOF\_Base\ 0x40011C00}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00024}\mbox{\hyperlink{_g_p_i_o_8h_ae7a599189a099b0fe1f4697ff44e830e}{00024}}\ \textcolor{preprocessor}{\#define\ GPIOG\_Base\ 0x40012000}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00029}\mbox{\hyperlink{struct_g_p_i_o___struct}{00029}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00031}\mbox{\hyperlink{struct_g_p_i_o___struct_a47f4ffc94d3f8702cc243caf6bef9c69}{00031}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a47f4ffc94d3f8702cc243caf6bef9c69}{GPIO\_CRL}};\ \textcolor{comment}{//\ offset\ 0}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00032}\mbox{\hyperlink{struct_g_p_i_o___struct_a7ea8516f05fe600a99ed53d478d31e6d}{00032}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a7ea8516f05fe600a99ed53d478d31e6d}{GPIO\_CRH}};\ \textcolor{comment}{//\ offset\ 4}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00033}\mbox{\hyperlink{struct_g_p_i_o___struct_a6df2349a238e45c824a5a0d524c7ac6e}{00033}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a6df2349a238e45c824a5a0d524c7ac6e}{GPIO\_IDR}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00034}\mbox{\hyperlink{struct_g_p_i_o___struct_a42bb9f075348fd6475b3202d837cf5db}{00034}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a42bb9f075348fd6475b3202d837cf5db}{GPIO\_ODR}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00035}\mbox{\hyperlink{struct_g_p_i_o___struct_a064b4144bbbb04c0a81f82a5ecefef17}{00035}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a064b4144bbbb04c0a81f82a5ecefef17}{GPIO\_BSRR}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00036}\mbox{\hyperlink{struct_g_p_i_o___struct_a759a781d4d7d7a5af6975ac21731ca43}{00036}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a759a781d4d7d7a5af6975ac21731ca43}{GPIO\_BRR}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00037}\mbox{\hyperlink{struct_g_p_i_o___struct_a1cf43a567fab0f8b1ad11923dc5963fa}{00037}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_g_p_i_o___struct_a1cf43a567fab0f8b1ad11923dc5963fa}{GPIO\_LCKR}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00038}00038\ \}\ \mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00043}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1b}{00043}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00045}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba903c3d2ac98eb0af8d23ee38b7946f97}{00045}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba903c3d2ac98eb0af8d23ee38b7946f97}{GPIO\_Out\_PP}}\ =\ 0b0000,\ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00046}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1baef46c2f5ef7e000f76d92795bdc26a8c}{00046}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1baef46c2f5ef7e000f76d92795bdc26a8c}{GPIO\_Out\_OD}}\ =\ 0b0100,\ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00048}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1bae61e356dc1b7ea946e8cf8fd474c679c}{00048}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1bae61e356dc1b7ea946e8cf8fd474c679c}{GPIO\_AF\_Out\_PP}}\ =\ 0b1000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00049}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba0c0c29a695737e22e2536e4aff0c7053}{00049}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba0c0c29a695737e22e2536e4aff0c7053}{GPIO\_AF\_Out\_OD}}\ =\ 0b1100,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00051}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba7157631ed5b649caff64b4ccbec988e7}{00051}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba7157631ed5b649caff64b4ccbec988e7}{GPIO\_Input\_Analog}},\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00053}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1baec6148829d352d1d14c8733a0c1ca254}{00053}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1baec6148829d352d1d14c8733a0c1ca254}{GPIO\_Input\_Float}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00054}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba5aef8313a10171ac895454f620a1019e}{00054}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba5aef8313a10171ac895454f620a1019e}{GPIO\_Input\_Pullup}},\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00055}\mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1bac1e18f160e00d38c40bcf50ef4e4851a}{00055}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1bac1e18f160e00d38c40bcf50ef4e4851a}{GPIO\_Input\_Pulldown}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00056}00056\ \}\ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1b}{GPIO\_Mode}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00061}\mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674}{00061}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00063}\mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674a37ac4fbf9d5484e63a068fc29d8bf625}{00063}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674a37ac4fbf9d5484e63a068fc29d8bf625}{GPIO\_Speed\_Low}}\ =\ 0b10,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00064}\mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674aec05df0ce1ee24dcbf8436af40aad7a0}{00064}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674aec05df0ce1ee24dcbf8436af40aad7a0}{GPIO\_Speed\_Med}}\ =\ 0b01,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674ab2acc7e70cb45c07f95f4cd60edd6d94}{GPIO\_Speed\_High}}\ =\ 0b11}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00066}\mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674ab2acc7e70cb45c07f95f4cd60edd6d94}{00066}}\ \}\ \mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674}{GPIO\_Speed\_Config}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00072}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{00072}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00074}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7fc9e1b6b72eedf0a61c459cf5216a7c}{00074}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7fc9e1b6b72eedf0a61c459cf5216a7c}{GPIO\_P0}}\ =\ 0b0000000000000001,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00075}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daad09de256a7d815a71f539e109956f716}{00075}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daad09de256a7d815a71f539e109956f716}{GPIO\_P1}}\ =\ 0b0000000000000010,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00076}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa07a5b1fbb13205cbb20126f5ea0bfa21}{00076}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa07a5b1fbb13205cbb20126f5ea0bfa21}{GPIO\_P2}}\ =\ 0b0000000000000100,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00077}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa9f3e188f12d3c771f951709c449cc7b7}{00077}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa9f3e188f12d3c771f951709c449cc7b7}{GPIO\_P3}}\ =\ 0b0000000000001000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00078}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7425a6185ffb4155888462abcc457028}{00078}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7425a6185ffb4155888462abcc457028}{GPIO\_P4}}\ =\ 0b0000000000010000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00079}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daaf5192fe93b3dd65bcf5a3b52532f9675}{00079}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daaf5192fe93b3dd65bcf5a3b52532f9675}{GPIO\_P5}}\ =\ 0b0000000000100000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00080}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa9050113893252469366a3061910382d3}{00080}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa9050113893252469366a3061910382d3}{GPIO\_P6}}\ =\ 0b0000000001000000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00081}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa895054482898767c8e73625568486c5a}{00081}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa895054482898767c8e73625568486c5a}{GPIO\_P7}}\ =\ 0b0000000010000000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00082}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa428895b4800d434fc125e4e9ed4026ed}{00082}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa428895b4800d434fc125e4e9ed4026ed}{GPIO\_P8}}\ =\ 0b0000000100000000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00083}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daaa82c6e3587aa778675c66c1510f0dd2c}{00083}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daaa82c6e3587aa778675c66c1510f0dd2c}{GPIO\_P9}}\ =\ 0b0000001000000000,\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00084}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7fcb8aaa5b178ee02dbfe39f8d678d25}{00084}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7fcb8aaa5b178ee02dbfe39f8d678d25}{GPIO\_P10}}\ =\ 0b0000010000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00085}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7a3faacdddb1e47928b9c7b1283710f8}{00085}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa7a3faacdddb1e47928b9c7b1283710f8}{GPIO\_P11}}\ =\ 0b0000100000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00086}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa52e9595e67b7ceb7a868cfa1b7e9fd20}{00086}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa52e9595e67b7ceb7a868cfa1b7e9fd20}{GPIO\_P12}}\ =\ 0b0001000000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00087}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa6d6ed0a41506b48ebde7bec73a2173fa}{00087}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa6d6ed0a41506b48ebde7bec73a2173fa}{GPIO\_P13}}\ =\ 0b0010000000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00088}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa4a764948d6050663641635f879ceadb4}{00088}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa4a764948d6050663641635f879ceadb4}{GPIO\_P14}}\ =\ 0b0100000000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00089}\mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa68ee55e55e3eda4e3845de3c69c47ae3}{00089}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9daa68ee55e55e3eda4e3845de3c69c47ae3}{GPIO\_P15}}\ =\ 0b1000000000000000,}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00090}00090\ \}\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00096}\mbox{\hyperlink{struct_g_p_i_o___config__t}{00096}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00098}\mbox{\hyperlink{struct_g_p_i_o___config__t_acfe9871239e2763e557cb8259100779a}{00098}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ \mbox{\hyperlink{struct_g_p_i_o___config__t_acfe9871239e2763e557cb8259100779a}{pin}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00099}\mbox{\hyperlink{struct_g_p_i_o___config__t_a9cc4606a19e5eee6ab316fb5f2688a25}{00099}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1b}{GPIO\_Mode}}\ \mbox{\hyperlink{struct_g_p_i_o___config__t_a9cc4606a19e5eee6ab316fb5f2688a25}{Mode}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00100}\mbox{\hyperlink{struct_g_p_i_o___config__t_a7dfe31aa49a9606c63c77ff7c975e451}{00100}}\ \ \ \ \ \mbox{\hyperlink{_g_p_i_o_8h_ad09326a57346443cbbe29c2c4cdbc674}{GPIO\_Speed\_Config}}\ \mbox{\hyperlink{struct_g_p_i_o___config__t_a7dfe31aa49a9606c63c77ff7c975e451}{Speed}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00101}00101\ \}\ \mbox{\hyperlink{struct_g_p_i_o___config__t}{GPIO\_Config\_t}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00103}\mbox{\hyperlink{_g_p_i_o_8h_afe43221ce69b16e7a3c61827d757aae4}{00103}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortA\ ((GPIO\_Struct\ *)(GPIOA\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00104}\mbox{\hyperlink{_g_p_i_o_8h_aa6aee7289e39d23104997aa97e0c4486}{00104}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortB\ ((GPIO\_Struct\ *)(GPIOB\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00105}\mbox{\hyperlink{_g_p_i_o_8h_a0e8ef1ef0c1d0892bb4c7d97f6923cc0}{00105}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortC\ ((GPIO\_Struct\ *)(GPIOC\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00106}\mbox{\hyperlink{_g_p_i_o_8h_a15d5ab31a1879f7f7216b1a7f08ab7d1}{00106}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortD\ ((GPIO\_Struct\ *)(GPIOD\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00107}\mbox{\hyperlink{_g_p_i_o_8h_aea6502b6022e296b8b720bbac82e4ff6}{00107}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortE\ ((GPIO\_Struct\ *)(GPIOE\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00108}\mbox{\hyperlink{_g_p_i_o_8h_a7f3ad8c21775be4aab7cd6c327de5342}{00108}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortF\ ((GPIO\_Struct\ *)(GPIOF\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00109}\mbox{\hyperlink{_g_p_i_o_8h_a5beba31733395c27783ce35bbd802773}{00109}}\ \textcolor{preprocessor}{\#define\ GPIO\_PortG\ ((GPIO\_Struct\ *)(GPIOG\_Base))}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00111}00111\ \textcolor{comment}{/*\ User\ exposed\ functions\ */}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00118}00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8h_af8be38454f81c16e37ec9e25346df8ef}{GPIO\_Init}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{struct_g_p_i_o___config__t}{GPIO\_Config\_t}}\ *conf);}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00126}00126\ uint8\_t\ \mbox{\hyperlink{_g_p_i_o_8h_aba0ba7db57aefc0f1dfaf223b4ab08d8}{GPIO\_Get\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin);}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00135}00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8h_a10fa48e780ae4f36559aa7f5d12f0419}{GPIO\_Set\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin,\ uint8\_t\ State);}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00143}00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8h_a70576ef242a27f8653c447684bbd990e}{GPIO\_TogglePin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin);}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00151}00151\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8h_af140206adf0c88fc5fe0beec38230ce0}{GPIO\_Lock\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin,\ uint8\_t\ Lock\_Unlock);}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8h_source_l00152}00152\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MYGPIO\_DRIVER\_GPIO\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

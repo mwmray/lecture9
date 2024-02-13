@@ -61,8 +61,7 @@ static void MX_GPIO_Init(void);
  * @brief  The application entry point.
  * @retval int
  */
-int main(void)
-{
+int main(void) {
 	/* USER CODE BEGIN 1 */
 
 	/* USER CODE END 1 */
@@ -81,6 +80,15 @@ int main(void)
 
 	/* USER CODE BEGIN SysInit */
 
+	//y exists at 0x20000000
+	GPIO_Struct *x;
+
+	int y = 10;
+
+	x = (int*) (0x20000000);
+
+	x = (GPIO_Struct*) (0x20000000);
+
 	/* USER CODE END SysInit */
 
 	/* Initialize all configured peripherals */
@@ -92,20 +100,29 @@ int main(void)
 	// __HAL_RCC_nameofperipheral_CLK_ENABLE();
 	__HAL_RCC_GPIOC_CLK_ENABLE();
 
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+
 	/*
 	 * using the GPIO driver we created:
 	 * 1- Declare a config struct with the required configuration,
 	 * 	in our case, we need to configure GPIOC Pin13 to be a output pin (push pull)
 	 * 	for driving LEDs, low speed is fine
 	 * */
-	GPIO_Config_t MyConfig =
-	{ .Mode = GPIO_Out_PP, .Speed = GPIO_Speed_Low, .pin = GPIO_P13 };
+
+	//1st method (Initialize the structure in definition)
+	GPIO_Config_t MyConfig = { .Mode = GPIO_Out_PP, .Speed = GPIO_Speed_Low,
+			.pin = GPIO_P13 };
 
 	/*
 	 * 2- Pass a pointer of the config struct to the the GPIO_Init function
 	 *  along with the name of the GPIO we need to configure
 	 * */
 	GPIO_Init(GPIO_PortC, &MyConfig);
+
+	//init PA0 as input pulled down
+	MyConfig.Mode = GPIO_Input_Pulldown;
+	MyConfig.pin = GPIO_P0;
+	GPIO_Init(GPIO_PortA, &MyConfig);
 
 	/*
 	 * 3- to set the logic level of an output pin, we use the
@@ -120,23 +137,32 @@ int main(void)
 	/* USER CODE BEGIN WHILE */
 
 	/* the below code blinks the LED connected to pin C13 forever */
-	while (1)
-	{
+	while (1) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
 
-		//Turn on the LED connected top Pin C13
-		GPIO_Set_Pin(GPIO_PortC, GPIO_P13, 0);
+		//read the status of GPIOA pin0 into the variable Status
+		uint8_t Status = GPIO_Get_Pin(GPIO_PortA, GPIO_P0);
 
-		//wait for 500ms (0.5 seconds)
-		HAL_Delay(500);
+		//Status 1 --> C13 0
+		//Status 0 --> C13 1
 
-		//Turn off the LED
-		GPIO_Set_Pin(GPIO_PortC, GPIO_P13, 1);
+		GPIO_Set_Pin(GPIO_PortC, GPIO_P13, Status ^ 1);
 
-		//wait for 500ms (0.5 seconds)
-		HAL_Delay(500);
+		GPIO_Set_Pin(GPIO_PortC, GPIO_P13, ~Status);
+
+		/*		//Turn on the LED connected top Pin C13
+		 GPIO_Set_Pin(GPIO_PortC, GPIO_P13, 0);
+
+		 //wait for 500ms (0.5 seconds)
+		 HAL_Delay(500);
+
+		 //Turn off the LED
+		 GPIO_Set_Pin(GPIO_PortC, GPIO_P13, 1);
+
+		 //wait for 500ms (0.5 seconds)
+		 HAL_Delay(500);*/
 	}
 	/* USER CODE END 3 */
 }
@@ -145,12 +171,9 @@ int main(void)
  * @brief System Clock Configuration
  * @retval None
  */
-void SystemClock_Config(void)
-{
-	RCC_OscInitTypeDef RCC_OscInitStruct =
-	{ 0 };
-	RCC_ClkInitTypeDef RCC_ClkInitStruct =
-	{ 0 };
+void SystemClock_Config(void) {
+	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
 	/** Initializes the RCC Oscillators according to the specified parameters
 	 * in the RCC_OscInitTypeDef structure.
@@ -162,21 +185,20 @@ void SystemClock_Config(void)
 	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
 	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
 	RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
-	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-	{
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
 		Error_Handler();
 	}
 
 	/** Initializes the CPU, AHB and APB buses clocks
 	 */
-	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+			| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
 	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
 	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
 	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
 	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-	{
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
 		Error_Handler();
 	}
 }
@@ -186,8 +208,7 @@ void SystemClock_Config(void)
  * @param None
  * @retval None
  */
-static void MX_GPIO_Init(void)
-{
+static void MX_GPIO_Init(void) {
 	/* USER CODE BEGIN MX_GPIO_Init_1 */
 	/* USER CODE END MX_GPIO_Init_1 */
 
@@ -207,13 +228,11 @@ static void MX_GPIO_Init(void)
  * @brief  This function is executed in case of error occurrence.
  * @retval None
  */
-void Error_Handler(void)
-{
+void Error_Handler(void) {
 	/* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 	__disable_irq();
-	while (1)
-	{
+	while (1) {
 	}
 	/* USER CODE END Error_Handler_Debug */
 }

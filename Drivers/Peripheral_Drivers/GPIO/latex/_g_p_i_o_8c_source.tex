@@ -1,0 +1,99 @@
+\doxysection{GPIO.\+c}
+\hypertarget{_g_p_i_o_8c_source}{}\label{_g_p_i_o_8c_source}\mbox{\hyperlink{_g_p_i_o_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00002}00002\ \textcolor{comment}{\ *\ GPIO.c}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jan\ 7,\ 2024}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Ramy\ Sorial}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_p_i_o_8h}{GPIO.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00010}00010\ \textcolor{preprocessor}{\#ifdef\ \_Test\_Mode}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00011}00011\ \mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ G,\ *\mbox{\hyperlink{_g_p_i_o_8h_afe43221ce69b16e7a3c61827d757aae4}{GPIO\_PortA}}\ =\ \&G;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00012}00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00014}\mbox{\hyperlink{_g_p_i_o_8c_a9787879655a20526115f7a4d3fb75dc7}{00014}}\ \textcolor{preprocessor}{\#define\ Config\_Mask\ ((uint32\_t)0b1111)}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00016}\mbox{\hyperlink{_g_p_i_o_8c_af8be38454f81c16e37ec9e25346df8ef}{00016}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8c_af8be38454f81c16e37ec9e25346df8ef}{GPIO\_Init}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{struct_g_p_i_o___config__t}{GPIO\_Config\_t}}\ *conf)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00021}00021\ \ \ \ \ uint32\_t\ Config\_Data;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{switch}\ (conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_a9cc4606a19e5eee6ab316fb5f2688a25}{Mode}})}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba7157631ed5b649caff64b4ccbec988e7}{GPIO\_Input\_Analog}}:}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ Config\_Data\ =\ 0b0000;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1baec6148829d352d1d14c8733a0c1ca254}{GPIO\_Input\_Float}}:}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ Config\_Data\ =\ 0b0100;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1ba5aef8313a10171ac895454f620a1019e}{GPIO\_Input\_Pullup}}:}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Config\_Data\ =\ 0b1000;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a42bb9f075348fd6475b3202d837cf5db}{GPIO\_ODR}}\ |=\ conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_acfe9871239e2763e557cb8259100779a}{pin}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_g_p_i_o_8h_ae647a44ad55704d3f447db1de2858e1bac1e18f160e00d38c40bcf50ef4e4851a}{GPIO\_Input\_Pulldown}}:}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ Config\_Data\ =\ 0b1000;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a42bb9f075348fd6475b3202d837cf5db}{GPIO\_ODR}}\ \&=\ \string~(conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_acfe9871239e2763e557cb8259100779a}{pin}});}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ Config\_Data\ =\ conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_a7dfe31aa49a9606c63c77ff7c975e451}{Speed}}\ |\ conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_a9cc4606a19e5eee6ab316fb5f2688a25}{Mode}};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ apply\ the\ configuration\ on\ the\ selected\ pins}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint16\_t\ x\ =\ 0;\ x\ <\ 16;\ x++)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ pin\ is\ supposed\ to\ be\ configured}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conf-\/>\mbox{\hyperlink{struct_g_p_i_o___config__t_acfe9871239e2763e557cb8259100779a}{pin}}\ \&\ (1\ <<\ x))}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CRL\ is\ responsible\ fro\ pins\ 0-\/7}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ 8)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ the\ old\ configuration\ using\ the\ 4-\/bit\ mask}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a47f4ffc94d3f8702cc243caf6bef9c69}{GPIO\_CRL}}\ \&=\ \string~(\mbox{\hyperlink{_g_p_i_o_8c_a9787879655a20526115f7a4d3fb75dc7}{Config\_Mask}}\ <<\ (4\ *\ x));}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ the\ new\ configuration}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a47f4ffc94d3f8702cc243caf6bef9c69}{GPIO\_CRL}}\ |=\ (Config\_Data\ <<\ (4\ *\ x));}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CRH\ is\ responsible\ for\ pins\ 8-\/15}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ the\ old\ configuration\ using\ the\ 4-\/bit\ mask}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a7ea8516f05fe600a99ed53d478d31e6d}{GPIO\_CRH}}\ \&=\ \string~(\mbox{\hyperlink{_g_p_i_o_8c_a9787879655a20526115f7a4d3fb75dc7}{Config\_Mask}}\ <<\ (4\ *\ (x\ -\/\ 8)));}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ the\ new\ configuration}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a7ea8516f05fe600a99ed53d478d31e6d}{GPIO\_CRH}}\ |=\ (Config\_Data\ <<\ (4\ *\ (x\ -\/\ 8)));}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00069}\mbox{\hyperlink{_g_p_i_o_8c_aba0ba7db57aefc0f1dfaf223b4ab08d8}{00069}}\ uint8\_t\ \mbox{\hyperlink{_g_p_i_o_8c_aba0ba7db57aefc0f1dfaf223b4ab08d8}{GPIO\_Get\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00070}00070\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ ((Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a6df2349a238e45c824a5a0d524c7ac6e}{GPIO\_IDR}}\ \&\ pin)\ >\ 0)\ ?\ 1\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00074}\mbox{\hyperlink{_g_p_i_o_8c_a10fa48e780ae4f36559aa7f5d12f0419}{00074}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8c_a10fa48e780ae4f36559aa7f5d12f0419}{GPIO\_Set\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin,\ uint8\_t\ State)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (State\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ one\ of\ the\ first\ 16bit\ inside\ the\ register}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Port-\/>GPIO\_ODR\ |=\ pin;}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a064b4144bbbb04c0a81f82a5ecefef17}{GPIO\_BSRR}}\ |=\ pin;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Port-\/>GPIO\_ODR\ \&=\ (\string~pin);}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ Port-\/>\mbox{\hyperlink{struct_g_p_i_o___struct_a759a781d4d7d7a5af6975ac21731ca43}{GPIO\_BRR}}\ |=\ pin;}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00089}\mbox{\hyperlink{_g_p_i_o_8c_a70576ef242a27f8653c447684bbd990e}{00089}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8c_a70576ef242a27f8653c447684bbd990e}{GPIO\_TogglePin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00090}00090\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//write\ your\ code\ here\ to\ toggle\ a\ GPIO\ pin}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00094}\mbox{\hyperlink{_g_p_i_o_8c_af140206adf0c88fc5fe0beec38230ce0}{00094}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_g_p_i_o_8c_af140206adf0c88fc5fe0beec38230ce0}{GPIO\_Lock\_Pin}}(\mbox{\hyperlink{struct_g_p_i_o___struct}{GPIO\_Struct}}\ *Port,\ \mbox{\hyperlink{_g_p_i_o_8h_a83f80ac7f08a1f0e6114d653aab5f9da}{GPIO\_Pin}}\ pin,\ uint8\_t\ Lock\_Unlock)}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//write\ your\ code\ here\ to\ lock/unlock\ a\ GPIO\ Pin}}
+\DoxyCodeLine{\Hypertarget{_g_p_i_o_8c_source_l00097}00097\ \}}
+
+\end{DoxyCode}
