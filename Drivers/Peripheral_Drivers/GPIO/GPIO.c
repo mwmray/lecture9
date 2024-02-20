@@ -92,17 +92,11 @@ void GPIO_TogglePin(GPIO_Struct *Port, GPIO_Pin pin)
 	Port->GPIO_ODR ^= pin;
 }
 
-void GPIO_Lock_Pin(GPIO_Struct *Port, GPIO_Pin pin, uint8_t Lock_Unlock)
+void GPIO_Lock_Pin(GPIO_Struct *Port, GPIO_Pin pin)
 {
 	//write your code here to lock/unlock a GPIO Pin
-	if(Lock_Unlock=1)
-	{
-		Port->GPIO_LCKR ^= pin;
-		Port->GPIO_LCKR ^=0b10000000000000000;
-	}
-	else
-	{
-		Port->GPIO_LCKR ^=0b10000000000000000;
-		Port->GPIO_LCKR ^= pin;
-	}
+	Port->GPIO_LCKR = pin;
+	Port->GPIO_LCKR |= (1<<16);
+	Port->GPIO_LCKR &= ~(1<<16);
+	Port->GPIO_LCKR |= (1<<16);
 }

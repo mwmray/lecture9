@@ -148,5 +148,5 @@ void GPIO_TogglePin(GPIO_Struct *Port, GPIO_Pin pin);
 /// @param Port pointer to the GPIO port struct where the pin resides
 /// @param pin pin number(s) to be written, to use multiple pins,
 /// use the or | operator
-void GPIO_Lock_Pin(GPIO_Struct *Port, GPIO_Pin pin, uint8_t Lock_Unlock);
+void GPIO_Lock_Pin(GPIO_Struct *Port, GPIO_Pin pin);
 #endif /* MYGPIO_DRIVER_GPIO_H_ */
